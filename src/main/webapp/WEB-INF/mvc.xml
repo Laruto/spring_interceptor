@@ -14,11 +14,18 @@
     <!--指明 controller 所在包，并扫描其中的注解-->
     <context:component-scan base-package="cn.wc.controller"/>
 
+    <!-- 视图解析器 -->
+    <bean
+            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
     <!--拦截器的配置-->
     <mvc:interceptors>
         <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
         <mvc:interceptor>
-            <mvc:mapping path="/**"/>
+         <mvc:mapping path="/**"/>
             <bean class="cn.wc.interceptor.MyInterceptor">    </bean>
         </mvc:interceptor>
 
